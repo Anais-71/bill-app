@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/38</span>
+                <span class='fraction'>0/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/38</span>
+                <span class='fraction'>0/44</span>
             </div>
         
             
@@ -132,7 +132,19 @@
 <a name='L73'></a><a href='#L73'>73</a>
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
-<a name='L76'></a><a href='#L76'>76</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -149,11 +161,22 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,6 +196,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -224,11 +248,22 @@ export default class NewBill {
 <span class="cstat-no" title="statement not covered" >    this.billId = null</span>
 <span class="cstat-no" title="statement not covered" >    new Logout({ document, localStorage, onNavigate })</span>
   }
+&nbsp;
   handleChangeFile = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
     const file = <span class="cstat-no" title="statement not covered" >this.document.querySelector(`input[data-testid="file"]`).files[0]</span>
     const filePath = <span class="cstat-no" title="statement not covered" >e.target.value.split(/\\/g)</span>
     const fileName = <span class="cstat-no" title="statement not covered" >filePath[filePath.length-1]</span>
+    const fileTypes = <span class="cstat-no" title="statement not covered" >['jpg','jpeg','png'];</span>
+    const extension = <span class="cstat-no" title="statement not covered" >file.name.split('.').pop().toLowerCase();</span>
+&nbsp;
+    // Check file extension
+<span class="cstat-no" title="statement not covered" >    if (!fileTypes.includes(extension)) {</span>
+<span class="cstat-no" title="statement not covered" >        alert('Le fichier n\'est pas une image JPG ou PNG.');</span>
+<span class="cstat-no" title="statement not covered" >        e.target.value = "";</span>
+<span class="cstat-no" title="statement not covered" >        return;</span>
+    }
+&nbsp;
     const formData = <span class="cstat-no" title="statement not covered" >new FormData()</span>
     const email = <span class="cstat-no" title="statement not covered" >JSON.parse(localStorage.getItem("user")).email</span>
 <span class="cstat-no" title="statement not covered" >    formData.append('file', file)</span>
@@ -248,7 +283,8 @@ export default class NewBill {
 <span class="cstat-no" title="statement not covered" >        this.fileUrl = fileUrl</span>
 <span class="cstat-no" title="statement not covered" >        this.fileName = fileName</span>
       }).catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt; <span class="cstat-no" title="statement not covered" >console.error(error))</span>
-  }
+}
+&nbsp;
   handleSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >e </span>=&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    e.preventDefault()</span>
 <span class="cstat-no" title="statement not covered" >    console.log('e.target.querySelector(`input[data-testid="datepicker"]`).value', e.target.querySelector(`input[data-testid="datepicker"]`).value)</span>
@@ -289,7 +325,7 @@ export default class NewBill {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jun 06 2024 11:46:25 GMT+0200 (heure d’été d’Europe centrale)
+                at Mon Jun 10 2024 11:11:58 GMT+0200 (heure d’été d’Europe centrale)
             </div>
         </div>
         <script src="../prettify.js"></script>
