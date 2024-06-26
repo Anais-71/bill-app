@@ -19,10 +19,14 @@ const row = (bill) => {
     `)
   }
 
-const rows = (data) => {
-  const SortedData = data.sort((a, b) => ((a.date < b.date) ? 1 : -1))
-  return (SortedData && SortedData.length) ? SortedData.map(bill => row(bill)).join("") : ""
-}
+  const rows = (data) => {
+    if (!data) {
+      return "";
+    }
+    const SortedData = data.sort((a, b) => ((a.date < b.date) ? 1 : -1))
+    return (SortedData && SortedData.length) ? SortedData.map(bill => row(bill)).join("") : ""
+  }
+  
 
 export default ({ data: bills, loading, error }) => {
   
